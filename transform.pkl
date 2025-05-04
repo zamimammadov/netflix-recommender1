@@ -1,0 +1,28 @@
+import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.neighbors import NearestNeighbors
+import pickle
+
+# 1. CSV'yi oku
+df = pd.read_csv("main_data.csv")  # dosya adını seninkine göre değiştir
+
+# 2. Boş overview'ları sil
+df.dropna(subset=["overview"], inplace=True)
+
+# 3. Metinleri vektörleştir
+tfidf = TfidfVectorizer(stop_words="english")
+tfidf_matrix = tfidf.fit_transform(df["overview"])
+
+# 4. Benzerlik modeli kur
+model = NearestNeighbors(metric='cosine', algorithm='brute')
+model.fit(tfidf_matrix)
+
+# 5. Kaydet
+with open("transform.pkl", "wb") as f:
+    pickle.dump(tfidf, f)
+
+with open("nlp_model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+# 6. (İsteğe bağlı) Başlık listesini de kaydet
+df["title"].to_csv("titles.csv", index=False)
