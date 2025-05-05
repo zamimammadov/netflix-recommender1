@@ -11,6 +11,13 @@ pandas>=0.19
 beautifulsoup4==4.9.1
 jsonschema==3.2.0
 tmdbv3api==1.6.1
-urllib3
-requests==2.23.0
+
+# ★ sürüm kilitleme — çakışma çözümü
+urllib3<2
+six>=1.17
+requests==2.31.0
+# ★ ────────────────────────────────────────────
+
 pickleshare==0.7.5
+lxml           # (IMDb scraping için)
+

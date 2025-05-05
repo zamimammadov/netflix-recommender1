@@ -5,22 +5,110 @@
 	resize: none;
 }
 
-.movie-content {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-}
+/* === Cast kartları 4‑lü dizi === */
+.movie-content{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;      /* boşlukları otomatik dengeler */
+  }
+  
+  /* her bir .castcard için */
+  .castcard{
+	flex: 0 1 calc(25% - 40px);        /* min‑max: %25 eksi kenar boşluk */
+	margin:15px;                       /* yatay/dikey boşluk */
+	max-width:200px;                   /* aşırı geniş monitörde taşmasın */
+  }
+  
+  .castcard .cast-img{
+	width:100%;                        /* karta tam oturur */
+	height:auto;                       /* oran bozulmaz */
+	max-height:200px;                  /* eski 360’tan küçük */
+	object-fit:cover;                  /* kırpma yerine dolgu */
+  }
+  
 
-.movie-content > div {
-	margin: 20px;
-}
-
-.btn-block {
+.btn-block{
 	width: 15%;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	color: #e4e0e0;
+}
+/* =========================
+   RECOMMENDED MOVIES – 4‑lü
+   ========================= */
+
+/* Kapsayıcı zaten .movie-content — yeniden kullanıyoruz */
+.movie-content{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;
+  }
+  
+  /* Film kartı (.card) genişliği ▼ */
+  .movie-content > .card{
+	flex: 0 1 calc(25% - 40px);   /* %25 – kenar boşluğu */
+	margin:20px;
+	max-width:200px;              /* dev ekranda taşmasın */
+  }
+  
+  /* Kart posterini küçült */
+  .movie-content > .card img{
+	width:100%;
+	height:auto;
+	max-height:280px;             /* eski 360’tan ufak */
+	object-fit:cover;
+  }
+  
+  /* ——— RESPONSIVE: tablette 2‑li, telefonda 1 ——— */
+  @media (max-width:768px){
+	.movie-content > .card{ flex:0 1 calc(50% - 40px); } /* 2’li */
+  }
+  @media (max-width:480px){
+	.movie-content > .card{ flex:0 1 calc(100% - 40px); } /* tam genişlik */
+  }
+/* ========== KART GÖVDESİNİ ŞEFFAFLAŞTIR ========== */
+
+/* Cast kartı */
+.castcard,
+.castcard .card-body{
+  background: transparent !important;  /* beyaz kutu gitti  */
+  border: none !important;             /* kenarlık varsa sil */
+  box-shadow: none !important;         /* gölge varsa sil    */
+  padding: 0;                          /* boşlukları daralt  */
+}
+
+/* Film kartı (.movie-content içindeki .card) */
+.movie-content > .card,
+.movie-content > .card .card-body{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+/* Yazı rengini koyulaştır (#e4e0e0 yerine #ccc gibi) */
+.castcard .card-title,
+.movie-content > .card .card-title{
+  color:#e4e0e0;        /* istediğin koyu tonu yaz   */
+  font-weight:600;
+  margin:8px 0 4px;     /* üst‑alt boşluğu küçült     */
+}
+
+.castcard .card-title + h5,      /* karakter ismi satırı */
+.movie-content > .card p,        /* film açıklaması vs.  */
+.movie-content > .card h5{
+  color:#a9a9a9;        /* ikincil metin rengi       */
+  font-size:0.9rem;
+  line-height:1.25;
+  margin:0 0 8px;
+}
+
+/* İmleç–buton efektleri duruyorsa yuvarla & küçült */
+.card-btn{
+  border-radius:18px;
+  padding:4px 12px;
+  font-size:0.8rem;
 }
 
 #content {
@@ -35,49 +123,89 @@
 
 .footer {
 	color: #e4e0e0;
-	text-align: right;
+	text-align:right;
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	width: 100%;
+ 	bottom: 10px;
+ 	right: 5px;
+ 	width: 100%;
 }
 
 h1 {
-	font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #e50914;
-	font-weight: bold;
-	margin-top: 30px;
-	text-shadow: #000000 0px 0px 13px;
-}
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #e50914;
+    font-weight: bold;
+    margin-top: 30px;
+    text-shadow: #000000 0px 0px 13px;
+ }
 
 .github-corner:hover .octo-arm {
-	animation: octocat-wave 560ms ease-in-out;
+  	animation: octocat-wave 560ms ease-in-out;
 }
 
 @keyframes octocat-wave {
-	0%, 100% {
-		transform: rotate(0);
-	}
-	20%, 60% {
-		transform: rotate(-25deg);
-	}
-	40%, 80% {
-		transform: rotate(10deg);
-	}
+  0%,
+  100% {
+    transform: rotate(0)
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg)
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg)
+  }
 }
 
-#autoComplete {
-	background-position: 97%;
+/* Arama kutusu – büyütülmüş hâli */
+#autoComplete{
+	/* önceki özellik: */
+	background-position: 93%;
+  
+	/* ⇣ Eklenen/ değiştirilen özellikler ⇣ */
+	width: 210px;          /* kutunun genişliği        */
+	max-width: 30%;        /* mobilde taşmasın          */
+	height: 40px;          /* kutunun yüksekliği        */
+	font-size: 1rem;       /* yazı boyutu               */
+	padding: 0 48px 0 18px;/* soldan/sağdan iç boşluk   */
+	border-radius: 28px;   /* oval köşeler (isteğe bağlı)*/
+  }
+  
+
+#name {
 	color: white;
+	padding: 1px;
 }
 
-svg[data-toggle=tooltip] {
-	width: 50px;
-	height: 50px;
+h6 {
+    margin-bottom: 20px;  
+}
+
+@media only screen and (max-width: 650px) {
+    #mcontent {
+      display: block;
+    }
+    .poster-lg {
+      display: none;
+    }
+    #details {
+		margin-left: 30px;
+	}
+    
+	#autoComplete {
+	  background-position: 97% ;
+	}
+	
+	svg[data-toggle=tooltip] {
+		width: 50px;
+		height: 50px;
+	}
 }
 
 @media only screen and (max-width: 991px) {
-	.modal-body {
+	.modal-body{
 		display: block;
 	}
 	.profile-pic {
@@ -87,7 +215,6 @@ svg[data-toggle=tooltip] {
 		margin-bottom: 20px;
 	}
 }
-
 @media only screen and (min-width: 992px) {
 	.modal-body {
 		display: flex;
@@ -95,42 +222,23 @@ svg[data-toggle=tooltip] {
 }
 
 @media only screen and (min-width: 651px) {
-	.poster-sm {
-		display: none;
-	}
+  .poster-sm {
+    display: none;
+   }
 
 	#mcontent {
 		display: flex;
 		flex-wrap: nowrap;
 	}
 
-	#loader {
-		display: none;
-		position: fixed;
-		z-index: 100;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-image: url("../static/loader.gif");
-		background-size: 20%;
-		background-position: 50% 50%;
-		background-color: rgba(255, 255, 255, 1);
-		background-repeat: no-repeat;
-		-webkit-transition: background-image 0.2s ease-in-out;
-		transition: background-image 0.2s ease-in-out;
-	}
+	
 
-	#loader-text {
-		vertical-align: middle;
-		color: white;
-	}
 }
 
-.poster {
-	-webkit-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
-	-moz-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
-	box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
+.poster{
+    -webkit-box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
+    -moz-box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
+    box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
 }
 
 .card:hover {
@@ -138,17 +246,22 @@ svg[data-toggle=tooltip] {
 }
 
 .castcard:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .cast-img {
 	filter: brightness(100%);
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
 	transition: all 0.75s ease;
 }
 
+
 .cast-img:hover {
 	filter: brightness(50%);
-	transition: all 0.75s ease;
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
 }
 
 .fig {
@@ -157,17 +270,22 @@ svg[data-toggle=tooltip] {
 	justify-content: center;
 	backdrop-filter: brightness(50%);
 	position: absolute;
-	bottom: 0;
-	top: 0;
-	right: 0;
-	left: 0;
+	bottom: 0px;
+	top: 0px;
+	right: 0px;
+	left: 0px;
 	opacity: 0;
-	transition: all 0.75s ease;
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
 }
 
 .fig:hover {
 	opacity: 1;
-	transition: all 0.75s ease;
+	backdrop-filter:br;
+	-moz-transition: all 0.75s ease;
+    -webkit-transition: all 0.75s ease;
+    transition: all 0.75s ease;
 }
 
 .card-btn {
@@ -179,12 +297,71 @@ svg[data-toggle=tooltip] {
 }
 
 .table td {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
+    border-color: white;
+    border-style:solid; 
+    border-width:1px;
 }
 
 .fail {
 	display: none;
 	color: white;
 }
+/* sayfa zeminini düz koyu tut */
+#content{
+	background-color:#181818;   /* veya istediğiniz tek renk */
+  }
+  
+  /* poster süslemesi */
+  .simple-poster{
+	max-width:250px;
+	box-shadow:0 4px 20px rgba(0,0,0,.6);
+  }
+  
+  /* metin genişliği için */
+  .overview{
+	line-height:1.4;
+	font-size:0.95rem;
+  }
+
+/* Film açıklaması ve meta veriler – soldan hizala */
+.hero-details{
+	text-align:left;
+	max-width:560px;
+	margin-left:42px;     /* postere sol boşluk */
+	line-height:1.5;
+  }
+  
+  .hero-details h2{
+	font-size:2rem;
+	font-weight:700;
+  }
+  
+  .hero-details .overview{
+	font-size:0.95rem;
+  }
+  .hero-details::before{    /* sadece üstte boşluk efekti */
+	content:"";
+	display:block;
+	height: 30px;           /* istediğin mesafe */
+  }
+#loader {
+	position: fixed;
+	inset: 0;              /* top/right/bottom/left = 0 */
+	z-index: 100;
+	display: none;         /* JS açıp kapatacak */
+	background-image: url("{{ url_for('static', filename='loader.gif') }}");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 200px;   /* ya da %25 */
+	background-color: rgba(0,0,0,.8); /* GIF net görünsün */
+  }
+ /*  static/style.css  – Jinja KULLANMADAN  */
+#loader{
+	position:fixed;
+	inset:0;
+	z-index:100;
+	display:none;            /* JS gösterecek */
+	background:#0008 url('/static/loader.gif') no-repeat 50% 50%;
+	background-size:200px;   /* isteğe bağlı %25 vb. */
+  }
+  
