@@ -129,10 +129,9 @@ Full exploratory analysis and cleaning steps live in
 ## 8. Licence & Credits
 
 MIT Licence – see `LICENSE`.
-© 2025 *Your Name* – built for the “Object‑Oriented Programming” coursework at
+© 2025 *Zamin Mammadov* – built for the “Object‑Oriented Programming” coursework at
 Vilnius University.
 
 ```
 
----
 
