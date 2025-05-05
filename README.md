@@ -20,9 +20,10 @@ user reviews into Good/Bad sentiment.
 
 ---
 
-## 2. Demo (GIF)
+## 2. Demo 
 
-*(Optional – drop a short screen‑capture GIF or PNG here)*
+![image](https://github.com/user-attachments/assets/f7474fe9-4f71-41ba-8ae2-816e0f2f3194)
+
 
 ---
 
