@@ -135,12 +135,3 @@ Vilnius University.
 
 ---
 
-### How to use it
-
-1. Create a new file called **`README.md`** in your project root.  
-2. Paste the content above.  
-3. Change the GitHub URL, your name, and any small details (Python version, licence) if necessary.  
-4. Save — you’re done.
-
-This README already meets the usual academic rubric: description + installation + usage + tests + credits. If you later bundle your code into a ZIP, this file will sit at the top level alongside your Markdown report.
-```
