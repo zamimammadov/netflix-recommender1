@@ -23,6 +23,7 @@ user reviews into Good/Bad sentiment.
 ## 2. Demo 
 
 ![image](https://github.com/user-attachments/assets/f7474fe9-4f71-41ba-8ae2-816e0f2f3194)
+![image](https://github.com/user-attachments/assets/c6c046fd-1e42-4c2e-8bc5-520f8f9a3329)
 
 
 ---
