@@ -1,15 +1,4 @@
-4 saniye için düşündüm
 
-
-Below is a concise, **ready‑to‑copy README.md** in **English** that covers everything a marker (or classmate) needs to install, run, and test *NextOnNetflix*. Feel free to paste it into a new `README.md` file and only adjust:
-
-* your GitHub URL (if you host the code),
-* Python version (if not 3.11),
-* and the author / licence line at the very end.
-
----
-
-```md
 # NextOnNetflix
 
 Lightweight Flask application that recommends **five similar movies** using
