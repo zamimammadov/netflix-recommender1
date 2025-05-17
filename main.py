@@ -37,8 +37,12 @@ _similarity  = cosine_similarity(_cv.fit_transform(_movies_df["comb"]))
 _clf         = pickle.load(open(MODEL_PATH, "rb"))
 _vectorizer  = pickle.load(open(VECT_PATH, "rb"))
 
-# TMDB key & headers
-TMDB_KEY = "7fee067b60fd14ed0bd0013b0863045f"
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # .env dosyasını yükle
+TMDB_KEY = os.getenv("TMDB_KEY")
+
 UA_HDRS  = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
